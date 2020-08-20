@@ -49,6 +49,10 @@ module.exports = {
       },
     ],
   },
+  //esto es para que maneje las rutas hay que reeiniciar el servidor
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './public/index.html',
