@@ -13,6 +13,11 @@ const reducer = (state, action) => {
         ...state,
         mylist: state.mylist.filter((items) => items.id !== action.payload), /* solo payload porque llega id solamente*/
       };
+    case actions.loginRequest:
+      return {
+        ...state,
+        user: actions.payload, /*aca le asigno el usuario al estado actual */
+      };
     default:
       return state;
   }

@@ -9,7 +9,7 @@ import deleteIcon from '../assets/static/remove-icon.png';
 
 const CarouselItem = (props) => {
   /* aca extraigo de las props las variables a usar en componente */
-  const { id, cover, title, year, contentRating, duration } = props;
+  const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({ id, cover, title, year, contentRating, duration });
   };
@@ -26,18 +26,24 @@ const CarouselItem = (props) => {
             src={playIcon}
             alt='Play Icon'
           />
-          <img
-            className='carousel-item__details--img'
-            src={plusIcon}
-            alt='Plus Icon'
-            onClick={handleSetFavorite}
-          />
-          <img
-            className='carousel-item__details--img'
-            src={deleteIcon}
-            alt='Delete Icon'
-            onClick={() => handleDeleteFavorite(id)}
-          />
+          {/*ternatio para saber si soy lista o no para  saber si mostrar eliminar o no */
+            isList ? (
+              <img
+                className='carousel-item__details--img'
+                src={deleteIcon}
+                alt='Delete Icon'
+                onClick={() => handleDeleteFavorite(id)}
+              />
+            ) : (
+              <img
+                className='carousel-item__details--img'
+                src={plusIcon}
+                alt='Plus Icon'
+                onClick={handleSetFavorite}
+              />
+            )
+          }
+
         </div>
         <p className='carousel-item__details--title'>{title}</p>
         <p className='carousel-item__details--subtitle'>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
@@ -14,7 +14,13 @@ const Home = ({ mylist, trends, originals }) => {
         <Categories title='Mi lista'>
           <Carousel>
             {mylist.map((item) => {
-              return <CarouselItem key={item.id} {...item} />;
+              return (
+                <CarouselItem
+                  key={item.id}
+                  {...item}
+                  isList
+                />
+              );
             })}
           </Carousel>
         </Categories>
