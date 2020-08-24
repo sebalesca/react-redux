@@ -1,5 +1,5 @@
 import { actions } from '../actions';
-
+/** NOTA OJO CON ACTION Y ACTIONS */
 const reducer = (state, action) => {
   switch (action.type) {
     case actions.setFavorite:
@@ -16,7 +16,12 @@ const reducer = (state, action) => {
     case actions.loginRequest:
       return {
         ...state,
-        user: actions.payload, /*aca le asigno el usuario al estado actual */
+        user: action.payload, /*aca le asigno el usuario al estado actual */
+      };
+    case actions.logoutRequest:
+      return {
+        ...state,
+        user: action.payload,
       };
     default:
       return state;

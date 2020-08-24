@@ -6,7 +6,7 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
 
-const Home = ({ mylist, trends, originals }) => {
+const Home = ({ user, mylist, trends, originals }) => {
   return (
     <>
       <Search />
@@ -44,6 +44,8 @@ const Home = ({ mylist, trends, originals }) => {
 };
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
+    playing: state.playing,
     mylist: state.mylist,
     trends: state.trends,
     originals: state.originals,

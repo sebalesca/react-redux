@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 /*Recuerden que se tiene que encapsular nuestra aplicación dentro de un provider, porque nada fuera del provider podrá acceder al store */
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import App from './routes/App';
 import reducer from './reducers';
 
@@ -171,8 +171,9 @@ const initialState = {
     },
   ],
 };
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, initialState);
+const store = createStore(reducer, initialState, composeEnhancers());
 ReactDom.render(
   <Provider store={store}>
     <App />
